@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>2.32.2</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:edureka</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:edureka</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:edureka</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:edureka</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:edureka</permission>
+    <permission>hudson.model.Computer.Build:edureka</permission>
+    <permission>hudson.model.Computer.Configure:edureka</permission>
+    <permission>hudson.model.Computer.Connect:edureka</permission>
+    <permission>hudson.model.Computer.Create:edureka</permission>
+    <permission>hudson.model.Computer.Delete:edureka</permission>
+    <permission>hudson.model.Computer.Disconnect:edureka</permission>
+    <permission>hudson.model.Hudson.Administer:edureka</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:edureka</permission>
+    <permission>hudson.model.Hudson.Read:edureka</permission>
+    <permission>hudson.model.Hudson.Read:read</permission>
+    <permission>hudson.model.Hudson.RunScripts:edureka</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:edureka</permission>
+    <permission>hudson.model.Item.Build:edureka</permission>
+    <permission>hudson.model.Item.Cancel:edureka</permission>
+    <permission>hudson.model.Item.Configure:edureka</permission>
+    <permission>hudson.model.Item.Configure:read</permission>
+    <permission>hudson.model.Item.Create:edureka</permission>
+    <permission>hudson.model.Item.Delete:edureka</permission>
+    <permission>hudson.model.Item.Discover:edureka</permission>
+    <permission>hudson.model.Item.Discover:read</permission>
+    <permission>hudson.model.Item.Move:edureka</permission>
+    <permission>hudson.model.Item.Read:edureka</permission>
+    <permission>hudson.model.Item.Read:read</permission>
+    <permission>hudson.model.Item.Workspace:edureka</permission>
+    <permission>hudson.model.Run.Delete:edureka</permission>
+    <permission>hudson.model.Run.Replay:edureka</permission>
+    <permission>hudson.model.Run.Update:edureka</permission>
+    <permission>hudson.model.View.Configure:edureka</permission>
+    <permission>hudson.model.View.Create:edureka</permission>
+    <permission>hudson.model.View.Delete:edureka</permission>
+    <permission>hudson.model.View.Read:edureka</permission>
+    <permission>hudson.scm.SCM.Tag:edureka</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
+  <jdks>
+    <jdk>
+      <name>java</name>
+      <home>/usr/lib/jvm/java-1.8.0-openjdk-amd64</home>
+      <properties/>
+    </jdk>
+  </jdks>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <com.nirima.jenkins.plugins.docker.DockerCloud plugin="docker-plugin@0.16.2">
+      <name>AWS_Docker</name>
+      <templates>
+        <com.nirima.jenkins.plugins.docker.DockerTemplate>
+          <configVersion>2</configVersion>
+          <labelString>docker-slave</labelString>
+          <launcher class="com.nirima.jenkins.plugins.docker.launcher.DockerComputerSSHLauncher">
+            <sshConnector plugin="ssh-slaves@1.13">
+              <port>22</port>
+              <credentialsId>19704261-6e62-4872-8f02-cda42349b5fe</credentialsId>
+              <jvmOptions></jvmOptions>
+              <javaPath></javaPath>
+              <maxNumRetries>0</maxNumRetries>
+              <retryWaitTime>0</retryWaitTime>
+            </sshConnector>
+          </launcher>
+          <remoteFsMapping>/var/lib/jenkins</remoteFsMapping>
+          <remoteFs>/tmp/jenkins</remoteFs>
+          <instanceCap>100</instanceCap>
+          <mode>EXCLUSIVE</mode>
+          <retentionStrategy class="com.nirima.jenkins.plugins.docker.strategy.DockerOnceRetentionStrategy">
+            <idleMinutes>10</idleMinutes>
+            <idleMinutes defined-in="com.nirima.jenkins.plugins.docker.strategy.DockerOnceRetentionStrategy">10</idleMinutes>
+          </retentionStrategy>
+          <numExecutors>1</numExecutors>
+          <dockerTemplateBase>
+            <image>devopsxprts/docker-jenkins-slave:ssh-jdk-git-mvn</image>
+            <dockerCommand></dockerCommand>
+            <lxcConfString></lxcConfString>
+            <hostname></hostname>
+            <dnsHosts/>
+            <network></network>
+            <volumes/>
+            <volumesFrom2/>
+            <environment/>
+            <bindPorts>222:22</bindPorts>
+            <bindAllPorts>false</bindAllPorts>
+            <privileged>false</privileged>
+            <tty>false</tty>
+            <extraHosts class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+              <c class="list"/>
+              <list reference="../c"/>
+            </extraHosts>
+          </dockerTemplateBase>
+          <removeVolumes>false</removeVolumes>
+          <pullStrategy>PULL_LATEST</pullStrategy>
+        </com.nirima.jenkins.plugins.docker.DockerTemplate>
+      </templates>
+      <serverUrl>tcp://ip-172-31-19-104.ap-south-1.compute.internal:4243</serverUrl>
+      <connectTimeout>0</connectTimeout>
+      <readTimeout>0</readTimeout>
+      <version>1.26</version>
+      <credentialsId></credentialsId>
+      <containerCap>100</containerCap>
+    </com.nirima.jenkins.plugins.docker.DockerCloud>
+  </clouds>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.5.6">
+      <owner class="hudson" reference="../../.."/>
+      <name>Addressbook_pipeline</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
+        <firstJob>compile</firstJob>
+        <firstJobLink>job/compile/</firstJobLink>
+      </gridBuilder>
+      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
+      <buildViewTitle></buildViewTitle>
+      <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
+      <cssUrl></cssUrl>
+      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
+      <alwaysAllowManualTrigger>false</alwaysAllowManualTrigger>
+      <showPipelineParameters>false</showPipelineParameters>
+      <rowHeaders class="au.com.centrumsystems.hudson.plugin.buildpipeline.extension.SimpleRowHeader"/>
+      <showPipelineParametersInHeaders>false</showPipelineParametersInHeaders>
+      <columnHeaders class="au.com.centrumsystems.hudson.plugin.buildpipeline.extension.NullColumnHeader"/>
+      <startsWithParameters>false</startsWithParameters>
+      <refreshFrequency>3</refreshFrequency>
+      <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
+    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>-1</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>
